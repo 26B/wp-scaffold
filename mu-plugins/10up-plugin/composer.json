@@ -1,5 +1,7 @@
 {
   "name": "10up/wp-plugin",
+  "description": "The starting point for all 10up WordPress plugins.",
+  "license": "MIT",
   "type": "wordpress-plugin",
   "authors": [
     {
@@ -8,8 +10,8 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
-    "haydenpierce/class-finder": "^0.4.3"
+    "php": ">=8.3",
+    "haydenpierce/class-finder": "^0.5.3"
   },
   "autoload": {
     "psr-4": {

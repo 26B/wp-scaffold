@@ -46,14 +46,14 @@ class ModuleInitialization {
 	/**
 	 * The list of initialized classes.
 	 *
-	 * @var array
+	 * @var array<\TenUpTheme\Module>
 	 */
 	protected $classes = [];
 
 	/**
 	 * Get all the TenUpTheme plugin classes.
 	 *
-	 * @return array
+	 * @return array<string>
 	 */
 	protected function get_classes() {
 		$class_finder = new ClassFinder();
@@ -79,6 +79,7 @@ class ModuleInitialization {
 			}
 
 			// Create a new reflection of the class.
+			// @phpstan-ignore argument.type
 			$reflection_class = new ReflectionClass( $class );
 
 			// Using reflection, check if the class can be initialized.
@@ -94,6 +95,10 @@ class ModuleInitialization {
 
 			// Initialize the class.
 			$instantiated_class = new $class();
+
+			if ( ! $instantiated_class instanceof Module ) {
+				continue;
+			}
 
 			// Assign the classes into the order they should be initialized.
 			$load_class_order[ intval( $instantiated_class->load_order ) ][] = [
@@ -153,7 +158,7 @@ class ModuleInitialization {
 	/**
 	 * Get all the initialized classes.
 	 *
-	 * @return array
+	 * @return array<\TenUpTheme\Module>
 	 */
 	public function get_all_classes() {
 		return $this->classes;

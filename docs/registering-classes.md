@@ -190,7 +190,6 @@ We've defined two classes, one using the default load order (`10`) and another w
 
 Because of this, the `TaxonomyFactory` class will always be loaded before the `PostTypeFactory` class.
 
-
 ## Known Issues
 
 ### Could not locate `composer.json`

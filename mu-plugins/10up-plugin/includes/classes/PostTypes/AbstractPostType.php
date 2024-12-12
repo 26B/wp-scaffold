@@ -92,7 +92,7 @@ abstract class AbstractPostType extends Module {
 	/**
 	 * Default post type supported feature names.
 	 *
-	 * @return array
+	 * @return array<string>
 	 */
 	public function get_editor_supports() {
 		$supports = [
@@ -110,10 +110,47 @@ abstract class AbstractPostType extends Module {
 	/**
 	 * Get the options for the post type.
 	 *
-	 * @return array
+	 * @return array{
+	 *      labels?: array<string, string>,
+	 *      description?: string,
+	 *      public?: bool,
+	 *      hierarchical?: bool,
+	 *      exclude_from_search?: bool,
+	 *      publicly_queryable?: bool,
+	 *      show_ui?: bool,
+	 *      show_in_menu?: bool,
+	 *      show_in_nav_menus?: bool,
+	 *      show_in_admin_bar?: bool,
+	 *      menu_position?: int,
+	 *      menu_icon?: string,
+	 *      capability_type?: string|array<int, string>,
+	 *      capabilities?: array<string, string>,
+	 *      map_meta_cap?: bool,
+	 *      supports?: array<string>|false,
+	 *      register_meta_box_cb?: callable,
+	 *      taxonomies?: array<string>,
+	 *      has_archive?: bool|string,
+	 *      rewrite?: bool|array{
+	 *          slug?: string,
+	 *          with_front?: bool,
+	 *          feeds?: bool,
+	 *          pages?: bool,
+	 *          ep_mask?: int,
+	 *      },
+	 *      query_var?: bool|string,
+	 *      can_export?: bool,
+	 *      delete_with_user?: bool,
+	 *      show_in_rest?: bool,
+	 *      rest_base?: string,
+	 *      rest_namespace?: string,
+	 *      rest_controller_class?: string,
+	 *      _builtin?: bool,
+	 *      template?: array<array<string, mixed>>,
+	 *      template_lock?: string|false,
+	 *  }
 	 */
 	public function get_options() {
-		return [
+		$options = [
 			'labels'            => $this->get_labels(),
 			'public'            => true,
 			'has_archive'       => true,
@@ -123,15 +160,22 @@ abstract class AbstractPostType extends Module {
 			'show_in_rest'      => true,
 			'supports'          => $this->get_editor_supports(),
 			'menu_icon'         => $this->get_menu_icon(),
-			'menu_position'     => $this->get_menu_position(),
 			'hierarchical'      => $this->is_hierarchical(),
 		];
+
+		$menu_position = $this->get_menu_position();
+
+		if ( null !== $menu_position ) {
+			$options['menu_position'] = $menu_position;
+		}
+
+		return $options;
 	}
 
 	/**
 	 * Get the labels for the post type.
 	 *
-	 * @return array
+	 * @return array<string>
 	 */
 	public function get_labels() {
 		$plural_label   = $this->get_plural_label();
@@ -225,7 +269,7 @@ abstract class AbstractPostType extends Module {
 	 * Returns the default supported taxonomies. The subclass should declare the
 	 * Taxonomies that it supports here if required.
 	 *
-	 * @return array
+	 * @return array<string>
 	 */
 	public function get_supported_taxonomies() {
 		return [];
