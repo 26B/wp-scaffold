@@ -1,4 +1,4 @@
-@define-mixin margin-collapse {
+@define-mixin margin-trim {
 	margin-trim: block;
 
 	@supports not (margin-trim: block) {
