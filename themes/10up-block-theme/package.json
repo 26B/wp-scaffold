@@ -17,15 +17,16 @@
 		"node": ">=18.0.0"
 	},
 	"devDependencies": {
-		"10up-toolkit": "^6.2.1"
+		"10up-toolkit": "^6.3.0"
 	},
 	"dependencies": {
-		"@10up/block-components": "^1.19.1",
+		"@10up/block-components": "^1.19.4",
 		"clsx": "^2.1.1"
 	},
 	"10up-toolkit": {
 		"useBlockAssets": true,
 		"useScriptModules": true,
+		"loadBlockSpecificStyles": true,
 		"entry": {
 			"editor-style-overrides": "./assets/css/editor-style-overrides.css",
 			"frontend": "./assets/js/frontend.js",

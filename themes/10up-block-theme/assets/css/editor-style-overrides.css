@@ -33,21 +33,21 @@
 }
 
 /*
- * Substract Inspector Controls Width from full viewport width if open
+ * Subtract Inspector Controls Width from full viewport width if open
  */
 .interface-interface-skeleton.is-sidebar-opened .editor-styles-wrapper {
 	--wp--custom--full-viewport-width: calc(100vw - var(--wp--interface--sidebar--width));
 }
 
 /*
- * Substract List View Width from full viewport width if open
+ * Subtract List View Width from full viewport width if open
  */
 .interface-interface-skeleton__secondary-sidebar ~ .interface-interface-skeleton__content .editor-styles-wrapper {
 	--wp--custom--full-viewport-width: calc(100vw - var(--wp--interface--secondary--sidebar--width));
 }
 
 /*
- * Substract both List View and Inspector Controls
+ * Subtract both List View and Inspector Controls
  * Width from full viewport width if open
  */
 .interface-interface-skeleton.is-sidebar-opened .interface-interface-skeleton__secondary-sidebar ~ .interface-interface-skeleton__content .editor-styles-wrapper {
@@ -62,10 +62,10 @@
 	min-height: 90dvh;
 }
 
-/* 
+/*
  * Small editor blocks like the footer social nav are hard to click
  * Setting a min-height so that elements can be selected to edit
- * Prior to this scrollbars overlap small elements
+ * Prior to this scrollbars overlaped small elements
 */
 .block-editor-iframe__container {
 	min-height: 70px;

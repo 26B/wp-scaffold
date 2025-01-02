@@ -23,6 +23,14 @@ html {
 	height: calc(100% - var(--wp-admin--admin-bar--height, 0px));
 }
 
+/*
+ * Ensure best type rendering
+ */
+:root {
+	font-feature-settings: "kern";
+	font-kerning: normal;
+	text-rendering: optimizeLegibility;
+}
 
 /*
  * Improve text rendering
@@ -77,9 +85,23 @@ h6 {
 	text-wrap: pretty; /* pretty is the nicer result but it isn't supported as well. So balance is here as a fallback */
 }
 
+p {
+	text-wrap: pretty;
+}
+
+
 /*
  * Create a root stacking context
  */
 .wp-site-blocks {
 	isolation: isolate;
+}
+
+/*
+ * Ensure the alt text is visible when an image is missing
+ */
+img {
+	font-size: 1rem;
+	font-style: italic;
+	line-height: 1.5;
 }
