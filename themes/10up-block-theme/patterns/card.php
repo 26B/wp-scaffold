@@ -10,8 +10,8 @@
 
 ?>
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"0"},"border":{"radius":"8px","width":"1px"}},"borderColor":"surface-secondary","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","flexWrap":"nowrap"}} -->
-<div class="wp-block-group alignwide has-border-color has-surface-secondary-border-color" style="border-width:1px;border-radius:8px">
+<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"0"},"border":{"radius":"8px","width":"1px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide" style="border-width:1px;border-radius:8px">
 
 	<!-- wp:post-featured-image {"aspectRatio":"16/9","width":"100%","height":"","style":{"border":{"radius":{"topRight":"8px","bottomRight":"0px","topLeft":"8px","bottomLeft":"0px"}}},"displayFallback":true} /-->
 
