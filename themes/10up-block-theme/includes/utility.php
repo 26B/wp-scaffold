@@ -25,6 +25,8 @@ function get_asset_info( $slug, $attribute = null ) {
 		$asset = require TENUP_BLOCK_THEME_PATH . 'dist/js/' . $slug . '.asset.php';
 	} elseif ( file_exists( TENUP_BLOCK_THEME_PATH . 'dist/css/' . $slug . '.asset.php' ) ) {
 		$asset = require TENUP_BLOCK_THEME_PATH . 'dist/css/' . $slug . '.asset.php';
+	} elseif ( file_exists( TENUP_BLOCK_THEME_PATH . 'dist/' . $slug . '.asset.php' ) ) {
+		$asset = require TENUP_BLOCK_THEME_PATH . 'dist/' . $slug . '.asset.php';
 	} else {
 		$asset = [
 			'version'      => TENUP_BLOCK_THEME_VERSION,

@@ -7,6 +7,8 @@
 
 namespace TenupBlockTheme\Blocks;
 
+use function TenupBlockTheme\Utility\get_asset_info;
+
 /**
  * Set up theme defaults and register supported WordPress features.
  *
@@ -54,22 +56,12 @@ function enqueue_theme_block_styles() {
 	foreach ( $stylesheets as $stylesheet_path ) {
 		$block_type = str_replace( TENUP_BLOCK_THEME_DIST_PATH . '/blocks/autoenqueue/', '', $stylesheet_path );
 		$block_type = str_replace( '.css', '', $block_type );
-		$asset_file = TENUP_BLOCK_THEME_DIST_PATH . 'blocks/autoenqueue/' . $block_type . '.asset.php';
-
-		if ( ! file_exists( $asset_file ) ) {
-			$asset_file = require $asset_file;
-		} else {
-			$asset_file = [
-				'version'      => filemtime( $stylesheet_path ),
-				'dependencies' => [],
-			];
-		}
 
 		wp_register_style(
 			"tenup-theme-{$block_type}",
 			TENUP_BLOCK_THEME_DIST_URL . 'blocks/autoenqueue/' . $block_type . '.css',
-			$asset_file['dependencies'],
-			$asset_file['version']
+			get_asset_info( 'blocks/autoenqueue/' . $block_type, 'dependencies' ),
+			get_asset_info( 'blocks/autoenqueue/' . $block_type, 'version' ),
 		);
 
 		wp_enqueue_block_style(
@@ -84,8 +76,8 @@ function enqueue_theme_block_styles() {
 			wp_enqueue_script(
 				$block_type,
 				TENUP_BLOCK_THEME_DIST_URL . 'blocks/autoenqueue/' . $block_type . '.js',
-				$asset_file['dependencies'],
-				$asset_file['version'],
+				get_asset_info( 'blocks/autoenqueue/' . $block_type, 'dependencies' ),
+				get_asset_info( 'blocks/autoenqueue/' . $block_type, 'version' ),
 				true
 			);
 		}
