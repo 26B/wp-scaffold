@@ -18,7 +18,7 @@ namespace TenupBlockTheme\Utility;
  *
  * @param string $slug Asset slug as defined in build/webpack configuration
  * @param string $attribute Optional attribute to get. Can be version or dependencies
- * @return string|array
+ * @return ($attribute is null ? array{version: string, dependencies: array<string>} : $attribute is 'dependencies' ? array<string> : string)
  */
 function get_asset_info( $slug, $attribute = null ) {
 	if ( file_exists( TENUP_BLOCK_THEME_PATH . 'dist/js/' . $slug . '.asset.php' ) ) {
@@ -26,7 +26,10 @@ function get_asset_info( $slug, $attribute = null ) {
 	} elseif ( file_exists( TENUP_BLOCK_THEME_PATH . 'dist/css/' . $slug . '.asset.php' ) ) {
 		$asset = require TENUP_BLOCK_THEME_PATH . 'dist/css/' . $slug . '.asset.php';
 	} else {
-		return null;
+		$asset = [
+			'version'      => TENUP_BLOCK_THEME_VERSION,
+			'dependencies' => [],
+		];
 	}
 
 	if ( ! empty( $attribute ) && isset( $asset[ $attribute ] ) ) {
