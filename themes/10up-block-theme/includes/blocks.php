@@ -26,21 +26,23 @@ function register_theme_blocks() {
 	// Register all the blocks in the theme.
 	if ( file_exists( TENUP_BLOCK_THEME_BLOCK_DIST_DIR ) ) {
 		$block_json_files = glob( TENUP_BLOCK_THEME_BLOCK_DIST_DIR . '*/block.json' );
+		$block_names      = [];
 
 		foreach ( $block_json_files as $filename ) {
-			$block_folder = dirname( $filename );
-			$block        = register_block_type_from_metadata( $block_folder );
-
-			add_filter(
-				'allowed_block_types_all',
-				function ( $allowed_blocks ) use ( $block ) {
-					if ( ! is_array( $allowed_blocks ) ) {
-						return $allowed_blocks;
-					}
-					return array_merge( $allowed_blocks, [ $block->name ] );
-				}
-			);
+			$block_folder  = dirname( $filename );
+			$block         = register_block_type_from_metadata( $block_folder );
+			$block_names[] = $block->name;
 		}
+
+		add_filter(
+			'allowed_block_types_all',
+			function ( array|bool $allowed_blocks ) use ( $block_names ): array|bool {
+				if ( ! is_array( $allowed_blocks ) ) {
+					return $allowed_blocks;
+				}
+				return array_merge( $allowed_blocks, $block_names );
+			}
+		);
 	}
 }
 
