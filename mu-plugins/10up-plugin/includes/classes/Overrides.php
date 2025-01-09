@@ -7,10 +7,15 @@
 
 namespace TenUpPlugin;
 
+use TenupFramework\Module;
+use TenupFramework\ModuleInterface;
+
 /**
  * Overrides class to manage WordPress core behavior modifications.
  */
-class Overrides extends Module {
+class Overrides implements ModuleInterface {
+
+	use Module;
 
 	/**
 	 * Used to alter the order in which classes are initialized.
