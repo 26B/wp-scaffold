@@ -7,6 +7,8 @@
 
 namespace TenUpPlugin\PostTypes;
 
+use TenupFramework\PostTypes\AbstractCorePostType;
+
 /**
  * Page Post Type
  *

@@ -7,6 +7,8 @@
 
 namespace TenUpPlugin\PostTypes;
 
+use TenupFramework\PostTypes\AbstractPostType;
+
 /**
  * Demo post type.
  */
