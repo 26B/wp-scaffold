@@ -7,7 +7,7 @@
 
 namespace TenUpTheme\Core;
 
-use TenUpTheme\ModuleInitialization;
+use TenupFramework\ModuleInitialization;
 use TenUpTheme\Utility;
 
 /**
@@ -38,22 +38,23 @@ function setup() {
 function init() {
 	do_action( 'tenup_theme_before_init' );
 
-	// If the composer.json isn't found, trigger a warning.
-	if ( ! file_exists( TENUP_THEME_PATH . 'composer.json' ) ) {
+	if ( ! class_exists( '\TenupFramework\ModuleInitialization' ) ) {
 		add_action(
 			'admin_notices',
 			function () {
 				$class = 'notice notice-error';
-				/* translators: %s: the path to the plugin */
-				$message = sprintf( __( 'The composer.json file was not found within %s. No classes will be loaded.', 'tenup-theme' ), TENUP_THEME_PATH );
 
-				printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+				printf(
+					'<div class="%1$s"><p>%2$s</p></div>',
+					esc_attr( $class ),
+					wp_kses_post( __( 'Please ensure the <code>10up/wp-framework</code> package is installed.', 'tenup-theme' ) )
+				);
 			}
 		);
 		return;
 	}
 
-	ModuleInitialization::instance()->init_classes();
+	ModuleInitialization::instance()->init_classes( TENUP_THEME_INC );
 	do_action( 'tenup_theme_init' );
 }
 
