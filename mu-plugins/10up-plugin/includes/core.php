@@ -7,8 +7,7 @@
 
 namespace TenUpPlugin\Core;
 
-use TenUpPlugin\ModuleInitialization;
-use WP_Error;
+use TenupFramework\ModuleInitialization;
 use TenUpPlugin\Utility;
 
 
@@ -52,22 +51,23 @@ function i18n() {
 function init() {
 	do_action( 'tenup_plugin_before_init' );
 
-	// If the composer.json isn't found, trigger a warning.
-	if ( ! file_exists( TENUP_PLUGIN_PATH . 'composer.json' ) ) {
+	if ( ! class_exists( '\TenupFramework\ModuleInitialization' ) ) {
 		add_action(
 			'admin_notices',
 			function () {
 				$class = 'notice notice-error';
-				/* translators: %s: the path to the plugin */
-				$message = sprintf( __( 'The composer.json file was not found within %s. No classes will be loaded.', 'tenup-plugin' ), TENUP_PLUGIN_PATH );
 
-				printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+				printf(
+					'<div class="%1$s"><p>%2$s</p></div>',
+					esc_attr( $class ),
+					wp_kses_post( __( 'Please ensure the <code>10up/wp-framework</code> package is installed.', 'tenup-plugin' ) )
+				);
 			}
 		);
 		return;
 	}
 
-	ModuleInitialization::instance()->init_classes();
+	ModuleInitialization::instance()->init_classes( TENUP_PLUGIN_INC );
 	do_action( 'tenup_plugin_init' );
 }
 
