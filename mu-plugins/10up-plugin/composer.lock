@@ -4,20 +4,20 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "bcf14f7d925faf6837ca6a54540b6efd",
+	"content-hash": "148b73c3c9ee1d44d892e572e04000f8",
 	"packages": [
 		{
 			"name": "10up/wp-framework",
-			"version": "dev-trunk",
+			"version": "1.0.0",
 			"source": {
 				"type": "git",
-				"url": "git@github.com:10up/wp-framework.git",
-				"reference": "e8a455de6a281d49761d649b6c44501ac5ea0393"
+				"url": "https://github.com/10up/wp-framework.git",
+				"reference": "341fc55c8abf302380ad0d1e269b13366bdd710a"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/10up/wp-framework/zipball/e8a455de6a281d49761d649b6c44501ac5ea0393",
-				"reference": "e8a455de6a281d49761d649b6c44501ac5ea0393",
+				"url": "https://api.github.com/repos/10up/wp-framework/zipball/341fc55c8abf302380ad0d1e269b13366bdd710a",
+				"reference": "341fc55c8abf302380ad0d1e269b13366bdd710a",
 				"shasum": ""
 			},
 			"require": {
@@ -36,43 +36,22 @@
 				"szepeviktor/phpstan-wordpress": "^2.0",
 				"yoast/phpunit-polyfills": "^2.0"
 			},
-			"default-branch": true,
 			"type": "library",
 			"autoload": {
 				"psr-4": {
 					"TenupFramework\\": "src/"
 				}
 			},
-			"autoload-dev": {
-				"psr-4": {
-					"TenupFrameworkTests\\": "tests/",
-					"TenupFrameworkTestClasses\\": "fixtures/classes/"
-				}
-			},
-			"scripts": {
-				"test": [
-					"XDEBUG_MODE=coverage ./vendor/bin/phpunit"
-				],
-				"lint": [
-					"phpcs ."
-				],
-				"lint-fix": [
-					"phpcbf ."
-				],
-				"static": [
-					"Composer\\Config::disableProcessTimeout",
-					"phpstan --memory-limit=1G"
-				]
-			},
+			"notification-url": "https://packagist.org/downloads/",
 			"license": [
 				"GPL-2.0-or-later"
 			],
 			"description": "A framework for building WordPress themes and plugins.",
 			"support": {
-				"source": "https://github.com/10up/wp-framework/tree/trunk",
-				"issues": "https://github.com/10up/wp-framework/issues"
+				"issues": "https://github.com/10up/wp-framework/issues",
+				"source": "https://github.com/10up/wp-framework/tree/1.0.0"
 			},
-			"time": "2024-12-19T14:57:51+00:00"
+			"time": "2025-01-09T18:34:02+00:00"
 		},
 		{
 			"name": "amphp/amp",
@@ -297,16 +276,16 @@
 		},
 		{
 			"name": "amphp/dns",
-			"version": "v2.3.0",
+			"version": "v2.4.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/amphp/dns.git",
-				"reference": "166c43737cef1b77782c648a9d9ed11ee0c9859f"
+				"reference": "78eb3db5fc69bf2fc0cb503c4fcba667bc223c71"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/amphp/dns/zipball/166c43737cef1b77782c648a9d9ed11ee0c9859f",
-				"reference": "166c43737cef1b77782c648a9d9ed11ee0c9859f",
+				"url": "https://api.github.com/repos/amphp/dns/zipball/78eb3db5fc69bf2fc0cb503c4fcba667bc223c71",
+				"reference": "78eb3db5fc69bf2fc0cb503c4fcba667bc223c71",
 				"shasum": ""
 			},
 			"require": {
@@ -374,7 +353,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/amphp/dns/issues",
-				"source": "https://github.com/amphp/dns/tree/v2.3.0"
+				"source": "https://github.com/amphp/dns/tree/v2.4.0"
 			},
 			"funding": [
 				{
@@ -382,7 +361,7 @@
 					"type": "github"
 				}
 			],
-			"time": "2024-12-21T01:15:34+00:00"
+			"time": "2025-01-19T15:43:40+00:00"
 		},
 		{
 			"name": "amphp/parallel",
@@ -532,16 +511,16 @@
 		},
 		{
 			"name": "amphp/pipeline",
-			"version": "v1.2.1",
+			"version": "v1.2.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/amphp/pipeline.git",
-				"reference": "66c095673aa5b6e689e63b52d19e577459129ab3"
+				"reference": "97cbf289f4d8877acfe58dd90ed5a4370a43caa4"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/amphp/pipeline/zipball/66c095673aa5b6e689e63b52d19e577459129ab3",
-				"reference": "66c095673aa5b6e689e63b52d19e577459129ab3",
+				"url": "https://api.github.com/repos/amphp/pipeline/zipball/97cbf289f4d8877acfe58dd90ed5a4370a43caa4",
+				"reference": "97cbf289f4d8877acfe58dd90ed5a4370a43caa4",
 				"shasum": ""
 			},
 			"require": {
@@ -587,7 +566,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/amphp/pipeline/issues",
-				"source": "https://github.com/amphp/pipeline/tree/v1.2.1"
+				"source": "https://github.com/amphp/pipeline/tree/v1.2.2"
 			},
 			"funding": [
 				{
@@ -595,7 +574,7 @@
 					"type": "github"
 				}
 			],
-			"time": "2024-07-04T00:56:47+00:00"
+			"time": "2025-01-19T15:42:46+00:00"
 		},
 		{
 			"name": "amphp/process",
@@ -928,7 +907,7 @@
 		},
 		{
 			"name": "illuminate/collections",
-			"version": "v11.37.0",
+			"version": "v11.38.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/collections.git",
@@ -984,7 +963,7 @@
 		},
 		{
 			"name": "illuminate/conditionable",
-			"version": "v11.37.0",
+			"version": "v11.38.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/conditionable.git",
@@ -1030,16 +1009,16 @@
 		},
 		{
 			"name": "illuminate/contracts",
-			"version": "v11.37.0",
+			"version": "v11.38.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/contracts.git",
-				"reference": "184317f701ba20ca265e36808ed54b75b115972d"
+				"reference": "534b697fc1dd9fbdd9fbf2f33fc9dcbb943dea75"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/illuminate/contracts/zipball/184317f701ba20ca265e36808ed54b75b115972d",
-				"reference": "184317f701ba20ca265e36808ed54b75b115972d",
+				"url": "https://api.github.com/repos/illuminate/contracts/zipball/534b697fc1dd9fbdd9fbf2f33fc9dcbb943dea75",
+				"reference": "534b697fc1dd9fbdd9fbf2f33fc9dcbb943dea75",
 				"shasum": ""
 			},
 			"require": {
@@ -1074,11 +1053,11 @@
 				"issues": "https://github.com/laravel/framework/issues",
 				"source": "https://github.com/laravel/framework"
 			},
-			"time": "2024-11-25T15:33:38+00:00"
+			"time": "2025-01-10T20:57:00+00:00"
 		},
 		{
 			"name": "illuminate/macroable",
-			"version": "v11.37.0",
+			"version": "v11.38.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/macroable.git",
@@ -1640,16 +1619,16 @@
 		},
 		{
 			"name": "spatie/laravel-package-tools",
-			"version": "1.18.0",
+			"version": "1.18.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/spatie/laravel-package-tools.git",
-				"reference": "8332205b90d17164913244f4a8e13ab7e6761d29"
+				"reference": "d41c44a7eab604c3eb0cad93210612d4c1429c20"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/8332205b90d17164913244f4a8e13ab7e6761d29",
-				"reference": "8332205b90d17164913244f4a8e13ab7e6761d29",
+				"url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/d41c44a7eab604c3eb0cad93210612d4c1429c20",
+				"reference": "d41c44a7eab604c3eb0cad93210612d4c1429c20",
 				"shasum": ""
 			},
 			"require": {
@@ -1688,7 +1667,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/spatie/laravel-package-tools/issues",
-				"source": "https://github.com/spatie/laravel-package-tools/tree/1.18.0"
+				"source": "https://github.com/spatie/laravel-package-tools/tree/1.18.2"
 			},
 			"funding": [
 				{
@@ -1696,20 +1675,20 @@
 					"type": "github"
 				}
 			],
-			"time": "2024-12-30T13:13:39+00:00"
+			"time": "2025-01-20T14:14:17+00:00"
 		},
 		{
 			"name": "spatie/php-structure-discoverer",
-			"version": "2.2.1",
+			"version": "2.3.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/spatie/php-structure-discoverer.git",
-				"reference": "e2b39ba0baaf05d1300c5467e7ee8a6439324827"
+				"reference": "42d161298630ede76c61e8a437a06eea2e106f4c"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/spatie/php-structure-discoverer/zipball/e2b39ba0baaf05d1300c5467e7ee8a6439324827",
-				"reference": "e2b39ba0baaf05d1300c5467e7ee8a6439324827",
+				"url": "https://api.github.com/repos/spatie/php-structure-discoverer/zipball/42d161298630ede76c61e8a437a06eea2e106f4c",
+				"reference": "42d161298630ede76c61e8a437a06eea2e106f4c",
 				"shasum": ""
 			},
 			"require": {
@@ -1768,7 +1747,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/spatie/php-structure-discoverer/issues",
-				"source": "https://github.com/spatie/php-structure-discoverer/tree/2.2.1"
+				"source": "https://github.com/spatie/php-structure-discoverer/tree/2.3.0"
 			},
 			"funding": [
 				{
@@ -1776,7 +1755,7 @@
 					"type": "github"
 				}
 			],
-			"time": "2024-12-16T13:29:18+00:00"
+			"time": "2025-01-13T13:15:29+00:00"
 		},
 		{
 			"name": "symfony/finder",
@@ -1846,9 +1825,7 @@
 	"packages-dev": [],
 	"aliases": [],
 	"minimum-stability": "stable",
-	"stability-flags": {
-		"10up/wp-framework": 20
-	},
+	"stability-flags": [],
 	"prefer-stable": false,
 	"prefer-lowest": false,
 	"platform": {

@@ -9,15 +9,9 @@
       "email": "info@10up.com"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/10up/wp-framework.git"
-    }
-  ],
   "require": {
     "php": ">=8.3",
-    "10up/wp-framework": "dev-trunk"
+    "10up/wp-framework": "^1.0.0"
   },
   "autoload": {
     "psr-4": {
