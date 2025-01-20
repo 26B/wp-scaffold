@@ -30,9 +30,18 @@ function register_theme_blocks() {
 		$block_json_files = glob( TENUP_BLOCK_THEME_BLOCK_DIST_DIR . '*/block.json' );
 		$block_names      = [];
 
+		if ( empty( $block_json_files ) ) {
+			return;
+		}
+
 		foreach ( $block_json_files as $filename ) {
 			$block_folder  = dirname( $filename );
 			$block         = register_block_type_from_metadata( $block_folder );
+
+			if ( ! $block ) {
+				continue;
+			}
+
 			$block_names[] = $block->name;
 		}
 
@@ -50,9 +59,16 @@ function register_theme_blocks() {
 
 /**
  * Enqueue block specific styles.
+ *
+ * @return void
  */
 function enqueue_theme_block_styles() {
 	$stylesheets = glob( TENUP_BLOCK_THEME_DIST_PATH . '/blocks/autoenqueue/**/*.css' );
+
+	if ( empty( $stylesheets ) ) {
+		return;
+	}
+
 	foreach ( $stylesheets as $stylesheet_path ) {
 		$block_type = str_replace( TENUP_BLOCK_THEME_DIST_PATH . '/blocks/autoenqueue/', '', $stylesheet_path );
 		$block_type = str_replace( '.css', '', $block_type );
