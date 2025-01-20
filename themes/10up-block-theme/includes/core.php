@@ -40,6 +40,8 @@ function i18n() {
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * @return void
  */
 function theme_setup() {
 	add_theme_support( 'editor-styles' );
@@ -104,6 +106,8 @@ function editor_style_overrides() {
 
 /**
  * register all icons located in the dist/svg folder
+ *
+ * @return void
  */
 function register_all_icons() {
 	if ( ! function_exists( '\UIKitCore\Helpers\register_icons' ) ) {
@@ -111,9 +115,18 @@ function register_all_icons() {
 	}
 
 	$icon_paths = glob( TENUP_BLOCK_THEME_DIST_PATH . 'svg/*.svg' );
+
+	if ( ! $icon_paths ) {
+		return;
+	}
+
 	$icons      = array_map(
 		function ( $icon_path ) {
 			$icon_name = preg_replace( '#\..*$#', '', basename( $icon_path ) );
+
+			if ( ! $icon_name || ! class_exists( '\UIKitCore\Icon' ) ) {
+				return false;
+			}
 
 			return new \UIKitCore\Icon(
 				$icon_name,
