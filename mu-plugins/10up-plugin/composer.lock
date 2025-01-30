@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "148b73c3c9ee1d44d892e572e04000f8",
+	"content-hash": "d81ce934b59217a1cf483ed7836b9936",
 	"packages": [
 		{
 			"name": "10up/wp-framework",
@@ -55,16 +55,16 @@
 		},
 		{
 			"name": "amphp/amp",
-			"version": "v3.0.2",
+			"version": "v3.1.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/amphp/amp.git",
-				"reference": "138801fb68cfc9c329da8a7b39d01ce7291ee4b0"
+				"reference": "7cf7fef3d667bfe4b2560bc87e67d5387a7bcde9"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/amphp/amp/zipball/138801fb68cfc9c329da8a7b39d01ce7291ee4b0",
-				"reference": "138801fb68cfc9c329da8a7b39d01ce7291ee4b0",
+				"url": "https://api.github.com/repos/amphp/amp/zipball/7cf7fef3d667bfe4b2560bc87e67d5387a7bcde9",
+				"reference": "7cf7fef3d667bfe4b2560bc87e67d5387a7bcde9",
 				"shasum": ""
 			},
 			"require": {
@@ -124,7 +124,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/amphp/amp/issues",
-				"source": "https://github.com/amphp/amp/tree/v3.0.2"
+				"source": "https://github.com/amphp/amp/tree/v3.1.0"
 			},
 			"funding": [
 				{
@@ -132,7 +132,7 @@
 					"type": "github"
 				}
 			],
-			"time": "2024-05-10T21:37:46+00:00"
+			"time": "2025-01-26T16:07:39+00:00"
 		},
 		{
 			"name": "amphp/byte-stream",
@@ -907,16 +907,16 @@
 		},
 		{
 			"name": "illuminate/collections",
-			"version": "v11.38.2",
+			"version": "v11.41.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/collections.git",
-				"reference": "9100b083eeb85d38d78fc1de28f7326596ab2eda"
+				"reference": "80c85f81573cc4c024da05312119f9149a6b64c1"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/illuminate/collections/zipball/9100b083eeb85d38d78fc1de28f7326596ab2eda",
-				"reference": "9100b083eeb85d38d78fc1de28f7326596ab2eda",
+				"url": "https://api.github.com/repos/illuminate/collections/zipball/80c85f81573cc4c024da05312119f9149a6b64c1",
+				"reference": "80c85f81573cc4c024da05312119f9149a6b64c1",
 				"shasum": ""
 			},
 			"require": {
@@ -959,11 +959,11 @@
 				"issues": "https://github.com/laravel/framework/issues",
 				"source": "https://github.com/laravel/framework"
 			},
-			"time": "2024-12-18T14:14:45+00:00"
+			"time": "2025-01-24T15:40:32+00:00"
 		},
 		{
 			"name": "illuminate/conditionable",
-			"version": "v11.38.2",
+			"version": "v11.41.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/conditionable.git",
@@ -1009,7 +1009,7 @@
 		},
 		{
 			"name": "illuminate/contracts",
-			"version": "v11.38.2",
+			"version": "v11.41.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/contracts.git",
@@ -1057,7 +1057,7 @@
 		},
 		{
 			"name": "illuminate/macroable",
-			"version": "v11.38.2",
+			"version": "v11.41.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/illuminate/macroable.git",
@@ -1619,16 +1619,16 @@
 		},
 		{
 			"name": "spatie/laravel-package-tools",
-			"version": "1.18.2",
+			"version": "1.18.3",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/spatie/laravel-package-tools.git",
-				"reference": "d41c44a7eab604c3eb0cad93210612d4c1429c20"
+				"reference": "ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/d41c44a7eab604c3eb0cad93210612d4c1429c20",
-				"reference": "d41c44a7eab604c3eb0cad93210612d4c1429c20",
+				"url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78",
+				"reference": "ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78",
 				"shasum": ""
 			},
 			"require": {
@@ -1667,7 +1667,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/spatie/laravel-package-tools/issues",
-				"source": "https://github.com/spatie/laravel-package-tools/tree/1.18.2"
+				"source": "https://github.com/spatie/laravel-package-tools/tree/1.18.3"
 			},
 			"funding": [
 				{
@@ -1675,7 +1675,7 @@
 					"type": "github"
 				}
 			],
-			"time": "2025-01-20T14:14:17+00:00"
+			"time": "2025-01-22T08:51:18+00:00"
 		},
 		{
 			"name": "spatie/php-structure-discoverer",
