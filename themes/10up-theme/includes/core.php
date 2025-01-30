@@ -47,7 +47,7 @@ function init() {
 				printf(
 					'<div class="%1$s"><p>%2$s</p></div>',
 					esc_attr( $class ),
-					wp_kses_post( __( 'Please ensure the <code>10up/wp-framework</code> package is installed.', 'tenup-theme' ) )
+					wp_kses_post( __( 'Please ensure the <a href="https://github.com/10up/wp-framework"><code>10up/wp-framework</code></a> package is installed.', 'tenup-theme' ) )
 				);
 			}
 		);
