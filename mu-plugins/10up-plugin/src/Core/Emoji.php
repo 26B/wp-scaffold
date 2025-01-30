@@ -1,19 +1,21 @@
 <?php
 /**
- * This file contains hooks and functions that override the behavior of WP Core.
+ * This file handles anything related to core emoji functionality.
  *
- * @package TenUpPlugin
+ * @package TenUpPlugin/Core
  */
 
-namespace TenUpPlugin;
+namespace TenUpPlugin\Core;
 
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
 
 /**
- * Overrides class to manage WordPress core behavior modifications.
+ * Emoji
+ *
+ * @package TenUpPlugin\Core
  */
-class Overrides implements ModuleInterface {
+class Emoji implements ModuleInterface {
 
 	use Module;
 
@@ -56,13 +58,6 @@ class Overrides implements ModuleInterface {
 
 		add_filter( 'tiny_mce_plugins', [ $this, 'disable_emojis_tinymce' ] );
 		add_filter( 'wp_resource_hints', [ $this, 'disable_emoji_dns_prefetch' ], 10, 2 );
-
-		// Remove WordPress generator meta.
-		remove_action( 'wp_head', 'wp_generator' );
-		// Remove Windows Live Writer manifest link.
-		remove_action( 'wp_head', 'wlwmanifest_link' );
-		// Remove the link to Really Simple Discovery service endpoint.
-		remove_action( 'wp_head', 'rsd_link' );
 	}
 
 	/**
