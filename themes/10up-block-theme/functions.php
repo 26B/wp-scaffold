@@ -33,7 +33,6 @@ if ( $is_local && file_exists( __DIR__ . '/dist/fast-refresh.php' ) ) {
 
 require_once TENUP_BLOCK_THEME_INC . 'core.php';
 require_once TENUP_BLOCK_THEME_INC . 'blocks.php';
-require_once TENUP_BLOCK_THEME_INC . 'overrides.php';
 require_once TENUP_BLOCK_THEME_INC . 'template-tags.php';
 require_once TENUP_BLOCK_THEME_INC . 'utility.php';
 

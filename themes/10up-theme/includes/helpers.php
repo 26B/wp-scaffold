@@ -12,8 +12,8 @@ namespace TenUpTheme;
  *
  * @param string $class_name The class name including the namespace.
  *
- * @return false|Module
+ * @return false|\TenupFramework\ModuleInterface
  */
 function get_module( $class_name ) {
-	return \TenUpTheme\ModuleInitialization::instance()->get_class( $class_name );
+	return \TenupFramework\ModuleInitialization::get_module( $class_name );
 }

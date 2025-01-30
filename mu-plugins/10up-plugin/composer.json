@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=8.3",
-    "haydenpierce/class-finder": "^0.5.3"
+    "10up/wp-framework": "~1.0.0"
   },
   "autoload": {
     "psr-4": {

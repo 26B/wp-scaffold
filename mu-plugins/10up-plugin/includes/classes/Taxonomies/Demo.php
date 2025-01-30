@@ -7,6 +7,8 @@
 
 namespace TenUpPlugin\Taxonomies;
 
+use TenupFramework\Taxonomies\AbstractTaxonomy;
+
 /**
  * Demo Taxonomy.
  */
