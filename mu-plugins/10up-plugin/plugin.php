@@ -36,12 +36,16 @@ if ( $is_local && file_exists( __DIR__ . '/dist/fast-refresh.php' ) ) {
 	}
 }
 
-// Require Composer autoloader if it exists.
-if ( file_exists( TENUP_PLUGIN_PATH . 'vendor/autoload.php' ) ) {
-	require_once TENUP_PLUGIN_PATH . 'vendor/autoload.php';
+// Bail if Composer autoloader is not found.
+if ( ! file_exists( TENUP_PLUGIN_PATH . 'vendor/autoload.php' ) ) {
+	throw new \Exception(
+		'Vendor autoload file not found. Please run `composer install`.'
+	);
 }
 
-$plugin_core = \TenUpPlugin\PluginCore::instance();
+require_once TENUP_PLUGIN_PATH . 'vendor/autoload.php';
+
+$plugin_core = new \TenUpPlugin\PluginCore();
 
 // Activation/Deactivation.
 register_activation_hook( __FILE__, [ $plugin_core, 'activate' ] );

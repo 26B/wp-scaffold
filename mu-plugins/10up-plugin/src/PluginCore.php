@@ -17,35 +17,6 @@ use TenupFramework\ModuleInitialization;
 class PluginCore {
 
 	/**
-	 * Instance of this class.
-	 *
-	 * @var PluginCore|null
-	 */
-	private static $instance = null;
-
-	/**
-	 * Get the instance of this class.
-	 *
-	 * @return PluginCore
-	 */
-	public static function instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
-
-	/**
-	 * Constructor
-	 *
-	 * @return void
-	 */
-	private function __construct() {
-		// Do nothing.
-	}
-
-	/**
 	 * Default setup routine
 	 *
 	 * @return void
