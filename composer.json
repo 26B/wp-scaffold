@@ -34,8 +34,8 @@
     "phpstan/phpstan-deprecation-rules": "^1.2"
   },
   "scripts": {
-    "lint": "phpcs .",
-    "lint-fix": "phpcbf .",
+    "lint": "./vendor/bin/phpcs --standard=./phpcs.xml",
+    "lint-fix": "./vendor/bin/phpcbf --standard=./phpcs.xml",
     "static": [
       "Composer\\Config::disableProcessTimeout",
       "phpstan --memory-limit=1G"

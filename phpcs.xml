@@ -3,8 +3,8 @@
 	<description>10up PHPCS extended.</description>
 
 	<!-- Scan these directories -->
-	<file>./themes/*</file>
-	<file>./mu-plugins/*</file>
+	<file>themes</file>
+	<file>mu-plugins</file>
 
 	<!-- Don't scan these directories -->
 	<exclude-pattern>node_modules/</exclude-pattern>
