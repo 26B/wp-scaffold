@@ -6,7 +6,7 @@ If you want to jump right in, take a look at the `TenUpPlugin\PostTypes\Demo::cl
 
 ## Post Types
 
-To create a new post type, you will need to create a new class that extends the `TenUpPlugin\PostTypes\AbstractPostType` class. This class will contain the configuration for the new post type.
+To create a new post type, you will need to create a new class that extends the `TenupFramework\PostTypes\AbstractPostType` class. This class will contain the configuration for the new post type.
 
 Once you've extended the class (or copied the `Demo` class), you will need to define the following methods:
 
@@ -171,7 +171,7 @@ The `after_register()` method can also be useful to hook into anything else you 
 
 ## Taxonomies
 
-To create a new taxonomy, you will need to create a new class that extends the `TenUpPlugin\Taxonomies\AbstractTaxonomy` class. This class will contain the configuration for the new taxonomy.
+To create a new taxonomy, you will need to create a new class that extends the `TenupFramework\Taxonomies\AbstractTaxonomy` class. This class will contain the configuration for the new taxonomy.
 
 Once you've extended the class (or copied the `Demo` class), you will need to define the following methods:
 

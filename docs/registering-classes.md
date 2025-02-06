@@ -6,7 +6,7 @@ To do this, it uses the [haydenpierce/class-finder](https://packagist.org/packag
 
 ## How do I define a class to be auto-registered?
 
-All you need to do to get a class to auto-register is extend the `TenUpPlugin\Module::class` or `TenUpTheme\Module::class` classes. That will require you to implement a `can_register()` and a `register()` method.
+All you need to do to get a class to auto-register is implement the `TenupFramework\ModuleInterface` interface and use the `TenupFramework\Module` trait. Finally, you will need to implement a `can_register()` and a `register()` method.
 
 ### `can_register()`
 
@@ -68,7 +68,9 @@ namespace TenUpPlugin\Admin;
 /**
  * Provide a Site Settings screen.
  */
-class SiteSettings extends \TenUpPlugin\Module {
+class SiteSettings implements \TenupFramework\ModuleInterface {
+
+	use \TenupFramework\Module;
 
 	/**
 	 * Fieldmanager Setting ID
@@ -166,11 +168,13 @@ namespace TenUpPlugin\Admin;
 /**
  * Taxonomy Factory
  */
-class TaxonomyFactory extends \TenUpPlugin\Module {
+class TaxonomyFactory implements \TenupFramework\ModuleInterface {
 
-  public $load_order = 9;
+	use \TenupFramework\Module;
 
-  // Rest of class removed for brevity.
+	public $load_order = 9;
+
+	// Rest of class removed for brevity.
 }
 ```
 
@@ -180,24 +184,14 @@ namespace TenUpPlugin\Admin;
 /**
  * Post Type Factory
  */
-class PostTypeFactory extends \TenUpPlugin\Module {
+class PostTypeFactory implements \TenupFramework\ModuleInterface {
 
-  // Rest of class removed for brevity.
+	use \TenupFramework\Module;
+
+	// Rest of class removed for brevity.
 }
 ```
 
 We've defined two classes, one using the default load order (`10`) and another with a custom load order (`9`).
 
 Because of this, the `TaxonomyFactory` class will always be loaded before the `PostTypeFactory` class.
-
-## Known Issues
-
-### Could not locate `composer.json`
-
-During deployment, we must deploy the `composer.json` file. This is how the class finder works, so if it doesn't exist you'll get an exception that states:
-
-```
-Could not locate composer.json. You can get around this by setting ClassFinder::$appRoot manually.
-```
-
-More information on this issue is available [here](https://gitlab.com/hpierce1102/ClassFinder/-/blob/master/docs/exceptions/missingComposerConfig.md).
