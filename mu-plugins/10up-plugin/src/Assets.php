@@ -9,6 +9,7 @@ namespace TenUpPlugin;
 
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
+use TenUpPlugin\Traits\GetAssetInfo;
 
 /**
  * Assets module.
@@ -18,6 +19,7 @@ use TenupFramework\ModuleInterface;
 class Assets implements ModuleInterface {
 
 	use Module;
+	use GetAssetInfo;
 
 	/**
 	 * Can this module be registered?
@@ -55,42 +57,14 @@ class Assets implements ModuleInterface {
 	}
 
 	/**
-	 * Get asset info from extracted asset files
-	 *
-	 * @param string $slug Asset slug as defined in build/webpack configuration
-	 * @param string $attribute Optional attribute to get. Can be version or dependencies
-	 * @return ($attribute is null ? array{version: string, dependencies: array<string>} : $attribute is 'dependencies' ? array<string> : string)
-	 */
-	public function get_asset_info( $slug, $attribute = null ) {
-		if ( file_exists( TENUP_PLUGIN_PATH . 'dist/js/' . $slug . '.asset.php' ) ) {
-			$asset = require TENUP_PLUGIN_PATH . 'dist/js/' . $slug . '.asset.php';
-		} elseif ( file_exists( TENUP_PLUGIN_PATH . 'dist/css/' . $slug . '.asset.php' ) ) {
-			$asset = require TENUP_PLUGIN_PATH . 'dist/css/' . $slug . '.asset.php';
-		} else {
-			$asset = [
-				'version'      => TENUP_PLUGIN_VERSION,
-				'dependencies' => [],
-			];
-		}
-
-		// @var <array{version: string, dependencies: array<string>}> $asset
-
-		if ( ! empty( $attribute ) && isset( $asset[ $attribute ] ) ) {
-			return $asset[ $attribute ];
-		}
-
-		return $asset;
-	}
-
-	/**
 	 * Generate an URL to a script, taking into account whether SCRIPT_DEBUG is enabled.
 	 *
-	 * @param string $script Script file name (no .js extension)
+	 * @param string $script  Script file name (no .js extension)
 	 * @param string $context Context for the script ('admin', 'frontend', or 'shared')
 	 *
+	 * @return string URL
 	 * @throws \RuntimeException If an invalid $context is specified.
 	 *
-	 * @return string URL
 	 */
 	public function script_url( $script, $context ) {
 
@@ -105,11 +79,11 @@ class Assets implements ModuleInterface {
 	 * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
 	 *
 	 * @param string $stylesheet Stylesheet file name (no .css extension)
-	 * @param string $context Context for the script ('admin', 'frontend', or 'shared')
-	 *
-	 * @throws \RuntimeException If an invalid $context is specified.
+	 * @param string $context    Context for the script ('admin', 'frontend', or 'shared')
 	 *
 	 * @return string URL
+	 * @throws \RuntimeException If an invalid $context is specified.
+	 *
 	 */
 	public function style_url( $stylesheet, $context ) {
 
@@ -225,6 +199,7 @@ class Assets implements ModuleInterface {
 	 * Enqueue editor styles. Filters the comma-delimited list of stylesheets to load in TinyMCE.
 	 *
 	 * @param string $stylesheets Comma-delimited list of stylesheets.
+	 *
 	 * @return string
 	 */
 	public function mce_css( $stylesheets ) {
@@ -241,8 +216,10 @@ class Assets implements ModuleInterface {
 	 * Add async/defer attributes to enqueued scripts that have the specified script_execution flag.
 	 *
 	 * @link https://core.trac.wordpress.org/ticket/12009
+	 *
 	 * @param string $tag    The script tag.
 	 * @param string $handle The script handle.
+	 *
 	 * @return string|null
 	 */
 	public function script_loader_tag( $tag, $handle ) {
