@@ -64,7 +64,6 @@ class Assets implements ModuleInterface {
 	 *
 	 * @return string URL
 	 * @throws \RuntimeException If an invalid $context is specified.
-	 *
 	 */
 	public function script_url( $script, $context ) {
 
@@ -83,7 +82,6 @@ class Assets implements ModuleInterface {
 	 *
 	 * @return string URL
 	 * @throws \RuntimeException If an invalid $context is specified.
-	 *
 	 */
 	public function style_url( $stylesheet, $context ) {
 
