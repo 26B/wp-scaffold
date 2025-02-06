@@ -120,7 +120,7 @@ function register_all_icons() {
 		return;
 	}
 
-	$icons      = array_map(
+	$icons = array_map(
 		function ( $icon_path ) {
 			$icon_name = preg_replace( '#\..*$#', '', basename( $icon_path ) );
 

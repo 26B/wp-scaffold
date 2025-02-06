@@ -35,8 +35,8 @@ function register_theme_blocks() {
 		}
 
 		foreach ( $block_json_files as $filename ) {
-			$block_folder  = dirname( $filename );
-			$block         = register_block_type_from_metadata( $block_folder );
+			$block_folder = dirname( $filename );
+			$block        = register_block_type_from_metadata( $block_folder );
 
 			if ( ! $block ) {
 				continue;
