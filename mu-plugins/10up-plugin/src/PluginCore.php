@@ -105,5 +105,4 @@ class PluginCore {
 	public static function get_module( $class_name ) {
 		return \TenupFramework\ModuleInitialization::get_module( $class_name );
 	}
-
 }
