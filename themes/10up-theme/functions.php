@@ -34,5 +34,7 @@ if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+require_once __DIR__ . '/template-tags.php';
+
 $theme_core = new \TenUpTheme\ThemeCore();
 $theme_core->setup();

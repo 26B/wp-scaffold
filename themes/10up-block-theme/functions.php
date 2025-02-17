@@ -33,5 +33,7 @@ if ( $is_local && file_exists( __DIR__ . '/dist/fast-refresh.php' ) ) {
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+require_once __DIR__ . '/template-tags.php';
+
 $theme_core = new \TenupBlockTheme\ThemeCore();
 $theme_core->setup();
