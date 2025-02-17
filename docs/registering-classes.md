@@ -1,8 +1,8 @@
 # Registering Classes in the MU-Plugin
 
-The MU-Plugin and the theme utilize a system to uniformly, auto-register classes that lie within their namespaces. Whilst there are a few constraints, it eases the requirements for engineers to add their classes to multiple locations each time they add one to the system.
+The MU-Plugin and the themes utilize a system to uniformly, auto-register classes that lie within their namespaces. Whilst there are a few constraints, it eases the requirements for engineers to add their classes to multiple locations each time they add one to the system.
 
-To do this, it uses the [haydenpierce/class-finder](https://packagist.org/packages/haydenpierce/class-finder) package, which reads the `composer.json` file to help locate files that belong in certain namespaces.
+To learn more about this, check out the class within TenUpFramework that handles this: [`TenupFramework\ModuleInitialization`](https://github.com/10up/wp-framework/blob/trunk/src/ModuleInitialization.php).
 
 ## How do I define a class to be auto-registered?
 
@@ -141,11 +141,11 @@ class SiteSettings implements \TenupFramework\ModuleInterface {
 
 The old way of doing this would be to use the `get_plugin_support()` function. As we no longer define and register our classes in the same way, this doesn't work.
 
-The best way now, is to use the `get_module()` function that ships with the plugin and the theme.
+The best way now, is to use the `get_module()` static method that ships with the plugin and the theme.
 
 ```php
-$site_settings = \TenUpPlugin\get_module( '\TenUpPlugin\Admin\SiteSettings' );
-$a_theme_class = \TenUpTheme\get_module( '\TenUpTheme\Some\Theme\Class' );
+$site_settings = \TenUpPlugin\PluginCore::get_module( '\TenUpPlugin\Admin\SiteSettings' );
+$a_theme_class = \TenUpTheme\ThemeCore::get_module( '\TenUpTheme\Some\Theme\Class' );
 ```
 
 If it can't find the class, it will return `false`.
@@ -156,9 +156,9 @@ One major difference between the old way and the new way is that when calling th
 
 By default classes will be loaded in the order they're found. It'd often required to load certain classes before another, for example, loading Taxonomies before Post Types.
 
-To get around this, there is a `$load_order` property available on the `Module` abstract classes.
+To get around this, there is a `load_order` method defined in the `ModuleInterface` interface. If you're using the `Module` trait, this is pre-defined for you.
 
-`$load_order` accepts an integer and lets us choose which classes will load first. It has no correlation to the `init` priority to a class, but works in the same way, the lower numbers will load first.
+`load_order()` returns an integer and lets us choose which classes will load first. It has no correlation to the `init` priority to a class, but works in the same way, the lower numbers will load first.
 
 To see it in action, see below.
 
@@ -172,7 +172,18 @@ class TaxonomyFactory implements \TenupFramework\ModuleInterface {
 
 	use \TenupFramework\Module;
 
-	public $load_order = 9;
+	/**
+	 * Used to alter the order in which clases are initialized.
+	 *
+	 * Lower number will be initialized first.
+	 *
+	 * @note This has no correlation to the `init` priority. It's just a way to allow certain classes to be initialized before others.
+	 *
+	 * @return int The priority of the module.
+	 */
+	public function load_order() {
+		return 9;
+	}
 
 	// Rest of class removed for brevity.
 }
