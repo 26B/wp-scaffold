@@ -32,8 +32,8 @@
 			"frontend": "./assets/js/frontend.js",
 			"block-extensions": "./assets/js/block-extensions.js"
 		},
-    "paths": {
-      "blocksDir": "./blocks"
-    }
+		"paths": {
+			"blocksDir": "./blocks"
+		}
 	}
 }

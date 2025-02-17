@@ -54,7 +54,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function scripts() {
-
 		/**
 		 * Enqueuing frontend.js is required to get css hot reloading working in the frontend
 		 * If you're not shipping any front-end js wrap this enqueue in a SCRIPT_DEBUG check.
@@ -131,7 +130,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function admin_styles() {
-
 		wp_enqueue_style(
 			'admin-style',
 			TENUP_THEME_TEMPLATE_URL . '/dist/css/admin.css',
@@ -172,7 +170,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function js_detection() {
-
 		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 	}
 
@@ -224,7 +221,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function embed_ct_css() {
-
 		$debug_performance = rest_sanitize_boolean( boolval( filter_input( INPUT_GET, 'debug_perf', FILTER_SANITIZE_NUMBER_INT ) ) );
 
 		if ( ! $debug_performance ) {

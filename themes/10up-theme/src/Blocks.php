@@ -42,7 +42,6 @@ class Blocks implements ModuleInterface {
 		add_action( 'init', [ $this, 'register_block_pattern_categories' ] );
 	}
 
-
 	/**
 	 * Automatically registers all blocks that are located within the includes/blocks directory
 	 *
@@ -173,7 +172,6 @@ class Blocks implements ModuleInterface {
 	 * @return void
 	 */
 	public function register_block_pattern_categories() {
-
 		// Register a block pattern category
 		register_block_pattern_category(
 			'10up-theme',

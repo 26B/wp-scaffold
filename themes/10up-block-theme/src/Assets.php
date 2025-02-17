@@ -48,7 +48,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function scripts() {
-
 		wp_enqueue_script(
 			'frontend',
 			TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
