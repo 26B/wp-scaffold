@@ -32,3 +32,5 @@
  *
  * Keeping this file limited to pure functions ensures maintainability and a clear separation of concerns.
  */
+
+namespace TenupTheme;
