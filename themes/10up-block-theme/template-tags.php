@@ -2,6 +2,8 @@
 /**
  * Template Tags
  *
+ * @package TenUpBlockTheme
+ *
  * This file contains **only** pure functions that relate to templating.
  *
  * Rules:
