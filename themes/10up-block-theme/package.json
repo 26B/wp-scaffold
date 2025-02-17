@@ -31,6 +31,9 @@
 			"editor-style-overrides": "./assets/css/editor-style-overrides.css",
 			"frontend": "./assets/js/frontend.js",
 			"block-extensions": "./assets/js/block-extensions.js"
+		},
+		"paths": {
+			"blocksDir": "./blocks"
 		}
 	}
 }

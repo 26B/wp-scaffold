@@ -11,12 +11,12 @@ define( 'TENUP_BLOCK_THEME_TEMPLATE_URL', get_template_directory_uri() );
 define( 'TENUP_BLOCK_THEME_PATH', get_template_directory() . '/' );
 define( 'TENUP_BLOCK_THEME_DIST_PATH', TENUP_BLOCK_THEME_PATH . 'dist/' );
 define( 'TENUP_BLOCK_THEME_DIST_URL', TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/' );
-define( 'TENUP_BLOCK_THEME_INC', TENUP_BLOCK_THEME_PATH . 'includes/' );
+define( 'TENUP_BLOCK_THEME_INC', TENUP_BLOCK_THEME_PATH . 'blocks/' );
 define( 'TENUP_BLOCK_THEME_BLOCK_DIST_DIR', TENUP_BLOCK_THEME_DIST_PATH . '/blocks/' );
 
 // Require Composer autoloader if it exists.
-if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-	require_once __DIR__ . '/vendor/autoload.php';
+if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	throw new Exception( 'Please run `composer install` in your theme directory.' );
 }
 
 $is_local_env = in_array( wp_get_environment_type(), [ 'local', 'development' ], true );
@@ -31,12 +31,9 @@ if ( $is_local && file_exists( __DIR__ . '/dist/fast-refresh.php' ) ) {
 	}
 }
 
-require_once TENUP_BLOCK_THEME_INC . 'core.php';
-require_once TENUP_BLOCK_THEME_INC . 'blocks.php';
-require_once TENUP_BLOCK_THEME_INC . 'template-tags.php';
-require_once TENUP_BLOCK_THEME_INC . 'utility.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-// Run the setup functions.
-TenupBlockTheme\Core\setup();
-TenupBlockTheme\Blocks\setup();
-TenupBlockTheme\TemplateTags\setup();
+require_once __DIR__ . '/template-tags.php';
+
+$theme_core = new \TenupBlockTheme\ThemeCore();
+$theme_core->setup();
