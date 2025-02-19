@@ -43,8 +43,6 @@ class Assets implements ModuleInterface {
 		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
 		add_action( 'wp_head', [ $this, 'js_detection' ], 0 );
 		add_action( 'wp_head', [ $this, 'embed_ct_css' ], 0 );
-
-		add_filter( 'script_loader_tag', [ $this, 'script_loader_tag' ], 10, 2 );
 	}
 
 
@@ -171,40 +169,6 @@ class Assets implements ModuleInterface {
 	 */
 	public function js_detection() {
 		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
-	}
-
-	/**
-	 * Add async/defer attributes to enqueued scripts that have the specified script_execution flag.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12009
-	 * @param string $tag    The script tag.
-	 * @param string $handle The script handle.
-	 * @return string|null
-	 */
-	public function script_loader_tag( $tag, $handle ) {
-		$script_execution = wp_scripts()->get_data( $handle, 'script_execution' );
-
-		if ( ! $script_execution ) {
-			return $tag;
-		}
-
-		if ( 'async' !== $script_execution && 'defer' !== $script_execution ) {
-			return $tag;
-		}
-
-		// Abort adding async/defer for scripts that have this script as a dependency. _doing_it_wrong()?
-		foreach ( wp_scripts()->registered as $script ) {
-			if ( in_array( $handle, $script->deps, true ) ) {
-				return $tag;
-			}
-		}
-
-		// Add the attribute if it hasn't already been added.
-		if ( ! preg_match( ":\s$script_execution(=|>|\s):", $tag ) ) {
-			$tag = preg_replace( ':(?=></script>):', " $script_execution", $tag, 1 );
-		}
-
-		return $tag;
 	}
 
 	/**
