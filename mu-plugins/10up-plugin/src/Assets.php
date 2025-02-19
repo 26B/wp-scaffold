@@ -53,14 +53,14 @@ class Assets implements ModuleInterface {
 	 * @return array<string>
 	 */
 	protected function get_enqueue_contexts() {
-		return [ 'admin', 'frontend', 'shared' ];
+		return [ 'admin', 'frontend' ];
 	}
 
 	/**
 	 * Generate an URL to a script, taking into account whether SCRIPT_DEBUG is enabled.
 	 *
 	 * @param string $script  Script file name (no .js extension)
-	 * @param string $context Context for the script ('admin', 'frontend', or 'shared')
+	 * @param string $context Context for the script ('admin' or 'frontend')
 	 *
 	 * @return string URL
 	 * @throws \RuntimeException If an invalid $context is specified.
@@ -78,7 +78,7 @@ class Assets implements ModuleInterface {
 	 * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
 	 *
 	 * @param string $stylesheet Stylesheet file name (no .css extension)
-	 * @param string $context    Context for the script ('admin', 'frontend', or 'shared')
+	 * @param string $context    Context for the script ('admin' or 'frontend')
 	 *
 	 * @return string URL
 	 * @throws \RuntimeException If an invalid $context is specified.
@@ -98,15 +98,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function scripts() {
-
-		wp_enqueue_script(
-			'tenup_plugin_shared',
-			$this->script_url( 'shared', 'shared' ),
-			$this->get_asset_info( 'shared', 'dependencies' ),
-			$this->get_asset_info( 'shared', 'version' ),
-			true
-		);
-
 		wp_enqueue_script(
 			'tenup_plugin_frontend',
 			$this->script_url( 'frontend', 'frontend' ),
@@ -122,15 +113,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function admin_scripts() {
-
-		wp_enqueue_script(
-			'tenup_plugin_shared',
-			$this->script_url( 'shared', 'shared' ),
-			$this->get_asset_info( 'shared', 'dependencies' ),
-			$this->get_asset_info( 'shared', 'version' ),
-			true
-		);
-
 		wp_enqueue_script(
 			'tenup_plugin_admin',
 			$this->script_url( 'admin', 'admin' ),
@@ -146,14 +128,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function styles() {
-
-		wp_enqueue_style(
-			'tenup_plugin_shared',
-			$this->style_url( 'shared', 'shared' ),
-			[],
-			$this->get_asset_info( 'shared', 'version' ),
-		);
-
 		if ( is_admin() ) {
 			wp_enqueue_style(
 				'tenup_plugin_admin',
@@ -177,14 +151,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function admin_styles() {
-
-		wp_enqueue_style(
-			'tenup_plugin_shared',
-			$this->style_url( 'shared', 'shared' ),
-			[],
-			$this->get_asset_info( 'shared', 'version' ),
-		);
-
 		wp_enqueue_style(
 			'tenup_plugin_admin',
 			$this->style_url( 'admin', 'admin' ),

@@ -24,8 +24,7 @@
   "10up-toolkit": {
     "entry": {
       "admin": "./assets/js/admin/admin.js",
-      "frontend": "./assets/js/frontend/frontend.js",
-      "shared": "./assets/js/shared/shared.js"
+      "frontend": "./assets/js/frontend/frontend.js"
     },
     "paths": {
       "globalStylesDir": "../../themes/10up-theme/assets/css/globals/",
