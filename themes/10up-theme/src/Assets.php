@@ -65,22 +65,6 @@ class Assets implements ModuleInterface {
 			$this->get_asset_info( 'frontend', 'version' ),
 			true
 		);
-
-		/**
-		 * Enqueuing shared.js is required to get css hot reloading working in the frontend
-		 * If you're not shipping any shared js wrap this enqueue in a SCRIPT_DEBUG check.
-		 */
-
-		/*
-		 * Uncoment this to use the shared.js file.
-			wp_enqueue_script(
-				'shared',
-				TENUP_THEME_TEMPLATE_URL . '/dist/js/shared.js',
-				$this->get_asset_info( 'shared', 'dependencies' ),
-				$this->get_asset_info( 'shared', 'version' ),
-				true
-			);
-		*/
 	}
 
 	/**
@@ -96,17 +80,6 @@ class Assets implements ModuleInterface {
 			$this->get_asset_info( 'admin', 'version' ),
 			true
 		);
-
-		/*
-		 * Uncoment this to use the shared.js file.
-			wp_enqueue_script(
-				'shared',
-				TENUP_THEME_TEMPLATE_URL . '/dist/js/shared.js',
-				$this->get_asset_info( 'shared', 'dependencies' ),
-				$this->get_asset_info( 'shared', 'version' ),
-				true
-			);
-		*/
 	}
 
 	/**
@@ -136,16 +109,6 @@ class Assets implements ModuleInterface {
 			[],
 			$this->get_asset_info( 'admin-style', 'version' )
 		);
-
-		/*
-		 * Uncoment this to use the shared.css file.
-			wp_enqueue_style(
-				'shared-style',
-				TENUP_THEME_TEMPLATE_URL . '/dist/css/shared.css',
-				[],
-				$this->get_asset_info( 'shared', 'version' )
-			);
-		*/
 	}
 
 	/**
