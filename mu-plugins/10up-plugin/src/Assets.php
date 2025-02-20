@@ -46,51 +46,6 @@ class Assets implements ModuleInterface {
 	}
 
 	/**
-	 * The list of knows contexts for enqueuing scripts/styles.
-	 *
-	 * @return array<string>
-	 */
-	protected function get_enqueue_contexts() {
-		return [ 'admin' ];
-	}
-
-	/**
-	 * Generate an URL to a script, taking into account whether SCRIPT_DEBUG is enabled.
-	 *
-	 * @param string $script  Script file name (no .js extension)
-	 * @param string $context Context for the script ('admin')
-	 *
-	 * @return string URL
-	 * @throws \RuntimeException If an invalid $context is specified.
-	 */
-	public function script_url( $script, $context ) {
-
-		if ( ! in_array( $context, $this->get_enqueue_contexts(), true ) ) {
-			throw new \RuntimeException( 'Invalid $context specified in TenUpPlugin script loader.' );
-		}
-
-		return TENUP_PLUGIN_URL . "dist/js/{$script}.js";
-	}
-
-	/**
-	 * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
-	 *
-	 * @param string $stylesheet Stylesheet file name (no .css extension)
-	 * @param string $context    Context for the script ('admin')
-	 *
-	 * @return string URL
-	 * @throws \RuntimeException If an invalid $context is specified.
-	 */
-	public function style_url( $stylesheet, $context ) {
-
-		if ( ! in_array( $context, $this->get_enqueue_contexts(), true ) ) {
-			throw new \RuntimeException( 'Invalid $context specified in TenUpPlugin stylesheet loader.' );
-		}
-
-		return TENUP_PLUGIN_URL . "dist/css/{$stylesheet}.css";
-	}
-
-	/**
 	 * Enqueue scripts for admin.
 	 *
 	 * @return void
@@ -98,7 +53,7 @@ class Assets implements ModuleInterface {
 	public function admin_scripts() {
 		wp_enqueue_script(
 			'tenup_plugin_admin',
-			$this->script_url( 'admin', 'admin' ),
+			TENUP_PLUGIN_URL . 'dist/js/admin.js',
 			$this->get_asset_info( 'admin', 'dependencies' ),
 			$this->get_asset_info( 'admin', 'version' ),
 			true
@@ -113,7 +68,7 @@ class Assets implements ModuleInterface {
 	public function admin_styles() {
 		wp_enqueue_style(
 			'tenup_plugin_admin',
-			$this->style_url( 'admin', 'admin' ),
+			TENUP_PLUGIN_URL . 'dist/css/admin-style.css',
 			[],
 			$this->get_asset_info( 'admin', 'version' ),
 		);

@@ -37,8 +37,6 @@ class Assets implements ModuleInterface {
 	 */
 	public function register() {
 		add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_styles' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
 		add_action( 'wp_head', [ $this, 'js_detection' ], 0 );
@@ -68,21 +66,6 @@ class Assets implements ModuleInterface {
 	}
 
 	/**
-	 * Enqueue scripts for admin
-	 *
-	 * @return void
-	 */
-	public function admin_scripts() {
-		wp_enqueue_script(
-			'admin',
-			TENUP_THEME_TEMPLATE_URL . '/dist/js/admin.js',
-			$this->get_asset_info( 'admin', 'dependencies' ),
-			$this->get_asset_info( 'admin', 'version' ),
-			true
-		);
-	}
-
-	/**
 	 * Enqueue core block filters, styles and variations.
 	 *
 	 * @return void
@@ -94,20 +77,6 @@ class Assets implements ModuleInterface {
 			$this->get_asset_info( 'block-editor-script', 'dependencies' ),
 			$this->get_asset_info( 'block-editor-script', 'version' ),
 			true
-		);
-	}
-
-	/**
-	 * Enqueue styles for admin
-	 *
-	 * @return void
-	 */
-	public function admin_styles() {
-		wp_enqueue_style(
-			'admin-style',
-			TENUP_THEME_TEMPLATE_URL . '/dist/css/admin.css',
-			[],
-			$this->get_asset_info( 'admin-style', 'version' )
 		);
 	}
 
