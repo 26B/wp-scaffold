@@ -36,8 +36,6 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function register() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_styles' ] );
 
@@ -53,14 +51,14 @@ class Assets implements ModuleInterface {
 	 * @return array<string>
 	 */
 	protected function get_enqueue_contexts() {
-		return [ 'admin', 'frontend' ];
+		return [ 'admin' ];
 	}
 
 	/**
 	 * Generate an URL to a script, taking into account whether SCRIPT_DEBUG is enabled.
 	 *
 	 * @param string $script  Script file name (no .js extension)
-	 * @param string $context Context for the script ('admin' or 'frontend')
+	 * @param string $context Context for the script ('admin')
 	 *
 	 * @return string URL
 	 * @throws \RuntimeException If an invalid $context is specified.
@@ -78,7 +76,7 @@ class Assets implements ModuleInterface {
 	 * Generate an URL to a stylesheet, taking into account whether SCRIPT_DEBUG is enabled.
 	 *
 	 * @param string $stylesheet Stylesheet file name (no .css extension)
-	 * @param string $context    Context for the script ('admin' or 'frontend')
+	 * @param string $context    Context for the script ('admin')
 	 *
 	 * @return string URL
 	 * @throws \RuntimeException If an invalid $context is specified.
@@ -90,21 +88,6 @@ class Assets implements ModuleInterface {
 		}
 
 		return TENUP_PLUGIN_URL . "dist/css/{$stylesheet}.css";
-	}
-
-	/**
-	 * Enqueue scripts for front-end.
-	 *
-	 * @return void
-	 */
-	public function scripts() {
-		wp_enqueue_script(
-			'tenup_plugin_frontend',
-			$this->script_url( 'frontend', 'frontend' ),
-			$this->get_asset_info( 'frontend', 'dependencies' ),
-			$this->get_asset_info( 'frontend', 'version' ),
-			true
-		);
 	}
 
 	/**
@@ -120,29 +103,6 @@ class Assets implements ModuleInterface {
 			$this->get_asset_info( 'admin', 'version' ),
 			true
 		);
-	}
-
-	/**
-	 * Enqueue styles for front-end.
-	 *
-	 * @return void
-	 */
-	public function styles() {
-		if ( is_admin() ) {
-			wp_enqueue_style(
-				'tenup_plugin_admin',
-				$this->style_url( 'admin', 'admin' ),
-				[],
-				$this->get_asset_info( 'admin', 'version' ),
-			);
-		} else {
-			wp_enqueue_style(
-				'tenup_plugin_frontend',
-				$this->style_url( 'frontend', 'frontend' ),
-				[],
-				$this->get_asset_info( 'frontend', 'version' ),
-			);
-		}
 	}
 
 	/**
