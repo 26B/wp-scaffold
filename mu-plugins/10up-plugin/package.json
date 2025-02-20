@@ -23,8 +23,7 @@
   },
   "10up-toolkit": {
     "entry": {
-      "admin": "./assets/js/admin/admin.js",
-      "frontend": "./assets/js/frontend/frontend.js"
+      "admin": "./assets/js/admin/admin.js"
     },
     "paths": {
       "globalStylesDir": "../../themes/10up-theme/assets/css/globals/",
