@@ -38,9 +38,6 @@ class Assets implements ModuleInterface {
 	public function register() {
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_styles' ] );
-
-		// Editor styles. add_editor_style() doesn't work outside of a theme.
-		add_filter( 'mce_css', [ $this, 'mce_css' ] );
 	}
 
 	/**
@@ -70,22 +67,5 @@ class Assets implements ModuleInterface {
 			[],
 			$this->get_asset_info( 'admin', 'version' ),
 		);
-	}
-
-	/**
-	 * Enqueue editor styles. Filters the comma-delimited list of stylesheets to load in TinyMCE.
-	 *
-	 * @param string $stylesheets Comma-delimited list of stylesheets.
-	 *
-	 * @return string
-	 */
-	public function mce_css( $stylesheets ) {
-		if ( ! empty( $stylesheets ) ) {
-			$stylesheets .= ',';
-		}
-
-		return $stylesheets . TENUP_PLUGIN_URL . ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ?
-				'assets/css/frontend/editor-style.css' :
-				'dist/css/editor-style.min.css' );
 	}
 }
