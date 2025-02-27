@@ -7,9 +7,9 @@
 
 namespace TenUpTheme;
 
+use TenupFramework\Assets\GetAssetInfo;
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
-use TenUpTheme\Traits\GetAssetInfo;
 
 /**
  * Blocks module.
@@ -36,6 +36,10 @@ class Blocks implements ModuleInterface {
 	 * @return void
 	 */
 	public function register() {
+		$this->setup_asset_vars(
+			dist_path: TENUP_THEME_DIST_PATH,
+			fallback_version: TENUP_THEME_VERSION
+		);
 		add_action( 'enqueue_block_editor_assets', [ $this, 'blocks_editor_styles' ] );
 		add_action( 'init', [ $this, 'enqueue_block_specific_styles' ] );
 		add_action( 'init', [ $this, 'register_theme_blocks' ] );
