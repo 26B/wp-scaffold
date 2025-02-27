@@ -11,7 +11,7 @@ define( 'TENUP_BLOCK_THEME_TEMPLATE_URL', get_template_directory_uri() );
 define( 'TENUP_BLOCK_THEME_PATH', get_template_directory() . '/' );
 define( 'TENUP_BLOCK_THEME_DIST_PATH', TENUP_BLOCK_THEME_PATH . 'dist/' );
 define( 'TENUP_BLOCK_THEME_DIST_URL', TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/' );
-define( 'TENUP_BLOCK_THEME_INC', TENUP_BLOCK_THEME_PATH . 'blocks/' );
+define( 'TENUP_BLOCK_THEME_INC', TENUP_BLOCK_THEME_PATH . 'src/' );
 define( 'TENUP_BLOCK_THEME_BLOCK_DIST_DIR', TENUP_BLOCK_THEME_DIST_PATH . '/blocks/' );
 
 // Require Composer autoloader if it exists.

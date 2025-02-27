@@ -37,14 +37,10 @@ class Assets implements ModuleInterface {
 	 */
 	public function register() {
 		add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_styles' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
 		add_action( 'wp_head', [ $this, 'js_detection' ], 0 );
 		add_action( 'wp_head', [ $this, 'embed_ct_css' ], 0 );
-
-		add_filter( 'script_loader_tag', [ $this, 'script_loader_tag' ], 10, 2 );
 	}
 
 
@@ -65,48 +61,6 @@ class Assets implements ModuleInterface {
 			$this->get_asset_info( 'frontend', 'version' ),
 			true
 		);
-
-		/**
-		 * Enqueuing shared.js is required to get css hot reloading working in the frontend
-		 * If you're not shipping any shared js wrap this enqueue in a SCRIPT_DEBUG check.
-		 */
-
-		/*
-		 * Uncoment this to use the shared.js file.
-			wp_enqueue_script(
-				'shared',
-				TENUP_THEME_TEMPLATE_URL . '/dist/js/shared.js',
-				$this->get_asset_info( 'shared', 'dependencies' ),
-				$this->get_asset_info( 'shared', 'version' ),
-				true
-			);
-		*/
-	}
-
-	/**
-	 * Enqueue scripts for admin
-	 *
-	 * @return void
-	 */
-	public function admin_scripts() {
-		wp_enqueue_script(
-			'admin',
-			TENUP_THEME_TEMPLATE_URL . '/dist/js/admin.js',
-			$this->get_asset_info( 'admin', 'dependencies' ),
-			$this->get_asset_info( 'admin', 'version' ),
-			true
-		);
-
-		/*
-		 * Uncoment this to use the shared.js file.
-			wp_enqueue_script(
-				'shared',
-				TENUP_THEME_TEMPLATE_URL . '/dist/js/shared.js',
-				$this->get_asset_info( 'shared', 'dependencies' ),
-				$this->get_asset_info( 'shared', 'version' ),
-				true
-			);
-		*/
 	}
 
 	/**
@@ -122,30 +76,6 @@ class Assets implements ModuleInterface {
 			$this->get_asset_info( 'block-editor-script', 'version' ),
 			true
 		);
-	}
-
-	/**
-	 * Enqueue styles for admin
-	 *
-	 * @return void
-	 */
-	public function admin_styles() {
-		wp_enqueue_style(
-			'admin-style',
-			TENUP_THEME_TEMPLATE_URL . '/dist/css/admin.css',
-			[],
-			$this->get_asset_info( 'admin-style', 'version' )
-		);
-
-		/*
-		 * Uncoment this to use the shared.css file.
-			wp_enqueue_style(
-				'shared-style',
-				TENUP_THEME_TEMPLATE_URL . '/dist/css/shared.css',
-				[],
-				$this->get_asset_info( 'shared', 'version' )
-			);
-		*/
 	}
 
 	/**
@@ -171,40 +101,6 @@ class Assets implements ModuleInterface {
 	 */
 	public function js_detection() {
 		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
-	}
-
-	/**
-	 * Add async/defer attributes to enqueued scripts that have the specified script_execution flag.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12009
-	 * @param string $tag    The script tag.
-	 * @param string $handle The script handle.
-	 * @return string|null
-	 */
-	public function script_loader_tag( $tag, $handle ) {
-		$script_execution = wp_scripts()->get_data( $handle, 'script_execution' );
-
-		if ( ! $script_execution ) {
-			return $tag;
-		}
-
-		if ( 'async' !== $script_execution && 'defer' !== $script_execution ) {
-			return $tag;
-		}
-
-		// Abort adding async/defer for scripts that have this script as a dependency. _doing_it_wrong()?
-		foreach ( wp_scripts()->registered as $script ) {
-			if ( in_array( $handle, $script->deps, true ) ) {
-				return $tag;
-			}
-		}
-
-		// Add the attribute if it hasn't already been added.
-		if ( ! preg_match( ":\s$script_execution(=|>|\s):", $tag ) ) {
-			$tag = preg_replace( ':(?=></script>):', " $script_execution", $tag, 1 );
-		}
-
-		return $tag;
 	}
 
 	/**
