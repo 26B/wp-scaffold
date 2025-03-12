@@ -101,5 +101,4 @@ class Assets implements ModuleInterface {
 	public function js_detection() {
 		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 	}
-
 }
