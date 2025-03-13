@@ -9,7 +9,7 @@
   ],
   "require": {
     "php": ">=8.3",
-    "10up/wp-framework": "^1.0.0"
+    "10up/wp-framework": "~1.1.0"
   },
   "require-dev": {
     "10up/phpcs-composer": "dev-trunk"
