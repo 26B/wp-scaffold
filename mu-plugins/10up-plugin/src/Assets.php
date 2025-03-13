@@ -7,9 +7,9 @@
 
 namespace TenUpPlugin;
 
+use TenupFramework\Assets\GetAssetInfo;
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
-use TenUpPlugin\Traits\GetAssetInfo;
 
 /**
  * Assets module.
@@ -36,6 +36,11 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function register() {
+		$this->setup_asset_vars(
+			dist_path: TENUP_PLUGIN_PATH . 'dist/',
+			fallback_version: TENUP_PLUGIN_VERSION
+		);
+
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_styles' ] );
 	}

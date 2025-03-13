@@ -7,9 +7,9 @@
 
 namespace TenupBlockTheme;
 
+use TenupFramework\Assets\GetAssetInfo;
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
-use TenupBlockTheme\Traits\GetAssetInfo;
 
 /**
  * Assets module.
@@ -36,6 +36,10 @@ class Assets implements ModuleInterface {
 	 * @return void
 	 */
 	public function register() {
+		$this->setup_asset_vars(
+			dist_path: TENUP_BLOCK_THEME_DIST_PATH,
+			fallback_version: TENUP_BLOCK_THEME_VERSION
+		);
 		add_action( 'init', [ $this, 'scripts' ] );
 		add_action( 'init', [ $this, 'register_all_icons' ], 10 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );

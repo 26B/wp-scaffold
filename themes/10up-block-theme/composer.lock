@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0401a5cc0905b079625a51823e3c0ddb",
+    "content-hash": "2941f630d858eaa9809aa458e658e631",
     "packages": [
         {
             "name": "10up/wp-framework",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/10up/wp-framework.git",
-                "reference": "341fc55c8abf302380ad0d1e269b13366bdd710a"
+                "reference": "5653768eedf1466a184b14bd275e2fbf7b547c00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/10up/wp-framework/zipball/341fc55c8abf302380ad0d1e269b13366bdd710a",
-                "reference": "341fc55c8abf302380ad0d1e269b13366bdd710a",
+                "url": "https://api.github.com/repos/10up/wp-framework/zipball/5653768eedf1466a184b14bd275e2fbf7b547c00",
+                "reference": "5653768eedf1466a184b14bd275e2fbf7b547c00",
                 "shasum": ""
             },
             "require": {
@@ -49,9 +49,9 @@
             "description": "A framework for building WordPress themes and plugins.",
             "support": {
                 "issues": "https://github.com/10up/wp-framework/issues",
-                "source": "https://github.com/10up/wp-framework/tree/1.0.0"
+                "source": "https://github.com/10up/wp-framework/tree/1.1.0"
             },
-            "time": "2025-01-09T18:34:02+00:00"
+            "time": "2025-03-13T16:05:45+00:00"
         },
         {
             "name": "amphp/amp",
