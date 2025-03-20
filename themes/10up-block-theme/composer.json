@@ -8,8 +8,8 @@
     }
   ],
   "require": {
-    "php": ">=8.3",
-    "10up/wp-framework": "~1.1.0"
+    "php": ">=8.2",
+    "10up/wp-framework": "~1.2.0"
   },
   "require-dev": {
     "10up/phpcs-composer": "dev-trunk"
